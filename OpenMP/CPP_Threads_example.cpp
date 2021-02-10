@@ -1,4 +1,4 @@
-//ѕрограмма вычислени€ на C++ Threads
+//C++ Threads
 #include <thread>
 #include <windows.h>
 
@@ -25,12 +25,12 @@ int main()
 	int i;
 	double pi{ 0 };
 
-	//массив потоков
+	//array of threads
 	std::thread threads[NUM_THREADS] = { std::thread(Pi,0),
 		std::thread(Pi,1), std::thread(Pi, 2), std::thread(Pi, 3) };
 
 	for (i = 0; i < NUM_THREADS; i++) {
-		threads[i].join(); // ожидание завершени€ потоков
+		threads[i].join(); // waiting for the threads ending
 		pi += global_sum[i] * step;
 	}
 

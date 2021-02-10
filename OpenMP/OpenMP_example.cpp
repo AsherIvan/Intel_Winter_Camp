@@ -1,6 +1,6 @@
 #include <omp.h>
 
-//Код работает в однопоточном режиме при выключенной библиотеке omp.h и в многопоточном, при включенной
+//Works in single thread mode when library omp.h is off and in multi thread mode when it is on
 int main()
 {
 	int num_steps = 100000000;
@@ -8,9 +8,9 @@ int main()
 	double pi, x, sum = 0.0;
 	double step = 1.0 / (double)num_steps;
 
-	//избавились от функции Pi
+	//Pi function moves to main
 
-	//В прагмах идет процесс распараллеливания
+	//Executing parallel process
 #pragma omp parallel num_threads(NUM_THREADS) private(x)
 #pragma omp for schedule(static, 1) reduction(+:sum)
 
